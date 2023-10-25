@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function Jugadores(props) {
   return(
       <View>
-        <Text style={styles.jugadores}>{props.jugadoresName}</Text>
+        <Text style={styles.jugadores}>{props.jugador}</Text>
       </View>
 )};
 
