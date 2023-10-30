@@ -1,13 +1,17 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Jugadores from './Jugadores';
+import React, {useState} from 'react';
 
-export default function Aside() {
-  const jugadores = ["Jugador 1.1", "Jugador 1.2", "Jugador 1.3", "Jugador 1.4", "Jugador 1.5"];
+//El orden para mostrar las imagenes es: App / Body / Aside / Jugadores / Perfil
+
+export default function Aside( {jugadores, equipoSeleccionado, jugadorSeleccionado, setjugadorSeleccionado, setimagenseleccionada }) {
+  const listaSeleccionada=jugadores[equipoSeleccionado];
+  
   return(
       <View style={styles.asideStyle}>
-        {jugadores.map((jugador) => (
-          <Jugadores jugador={jugador} />
-        ))} 
+        {listaSeleccionada.map((jugador, index) => (
+          <Jugadores key={index} index={index} jugador={jugador.nombre} imagenesJugador={jugador.imagen} jugadorSeleccionado={jugadorSeleccionado} setjugadorSeleccionado={setjugadorSeleccionado} setimagenseleccionada={setimagenseleccionada}/>
+        ))}
     </View>
 )};
 

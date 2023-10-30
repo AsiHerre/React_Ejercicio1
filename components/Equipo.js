@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 
+//NO SE UTILIZA. ¿¿¿ BORRARLO ???
+
 export default function Equipo(props) {
   return(
       <View>
@@ -9,12 +11,4 @@ export default function Equipo(props) {
 
 
 const styles = StyleSheet.create({
-  equipo: {
-    fontSize: 16,
-    borderWidth: 2,
-    borderColor: '#000000',
-    padding: 10,
-    margin: 10,
-    fontWeight: 'bold',
-  },
 });

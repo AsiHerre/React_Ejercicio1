@@ -1,15 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native';
-import Equipo from './Equipo';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function Header() {
-  const equipos = ["Equipo 1", "Equipo2", "Equipo3"];
-  return(
-      <View style={styles.headerStyle}>
-        {equipos.map((equipo) => (
-          <Equipo equipo={equipo} />
-        ))}      
-      </View>
-)};
+export default function Header({ equipos, equipoSeleccionado, handleEquipoClick }) {
+  //const
+  return (
+    <View style={styles.headerStyle}>
+      {equipos.map((equipo, index) => (
+        <TouchableOpacity key={index} onPress={() => handleEquipoClick(index)} style={[styles.equipo, index == equipoSeleccionado && {backgroundColor: "#3C9AC9"}]}>
+          <Text>{equipo}</Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
+}
+
 
 
 const styles = StyleSheet.create({

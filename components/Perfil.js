@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 
+//El orden para mostrar las imagenes es: App / Body / Aside / Jugadores / Perfil
 
-export default function Jugador() {
+export default function Perfil({ imagenSeleccionada }) {
   return(
         <View style={styles.jugador}>
-          <Image source={require('../assets/Imagen_futbolista.png')} style={styles.perfil}></Image>
+          <Image source={{uri: imagenSeleccionada}} style={styles.perfil}></Image>
         </View>
 )};
 
