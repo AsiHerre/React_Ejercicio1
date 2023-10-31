@@ -5,23 +5,24 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default function Perfil({ imagenSeleccionada }) {
   return(
-        <View style={styles.jugador}>
-          <Image source={{uri: imagenSeleccionada}} style={styles.perfil}></Image>
+        <View style={styles.perfil}>
+          <Image source={{uri: imagenSeleccionada}} style={styles.imagenPerfil}></Image>
         </View>
 )};
 
 
 const styles = StyleSheet.create({
-    jugador: {
-      flex: 1,
-      borderWidth: 2,
-      borderColor: "#000000",
-      padding: 10,
-    },
+  perfil: {
+    flex: 1,
+    borderWidth: 2,
+    borderColor: '#000000',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
-    perfil: {
-      flex: 1,
-      borderWidth: 2,
-      maxWidth: 700,
-    },
+  imagenPerfil: {
+    width: '32%',
+    aspectRatio: 1,
+    resizeMode: 'contain',
+  },
 });

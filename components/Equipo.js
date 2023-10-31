@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function Equipo(props) {
   return(
       <View>
-        <Text style={styles.equipo}>{props.equipo}</Text>
+        <Text>{props.equipo}</Text>
       </View>
 )};
 
