@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 //El orden para mostrar las imagenes es: App / Body / Aside / Jugadores / Perfil
+//platform OS
 
 export default function Perfil({ imagenSeleccionada }) {
   return(
@@ -21,5 +22,6 @@ const styles = StyleSheet.create({
     perfil: {
       flex: 1,
       borderWidth: 2,
+      maxWidth: 700,
     },
 });
