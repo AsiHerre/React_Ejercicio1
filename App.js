@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Platform } from 'react-native';
 import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
@@ -49,12 +49,22 @@ export default function App() {
   const [jugadorSeleccionado, setjugadorSeleccionado] = useState(0);
   const [imagenSeleccionada, setimagenseleccionada] = useState(jugadores[0][0].imagen); //Eso es para que salga por defecto el primer equipo, con el primer jugador y la imagen (al iniciar la aplicación)
   const [hoveredIndex, setHoveredIndex] = useState(null); //Estado para añadir el hover a los equipos y jugadores
+  const [mostrarJugadores, setMostrarJugadores] = useState(true);
+  const [mostrarEquipos, setMostrarEquipos] = useState(false);
 
   //La funcion handleEquipoClick lo que hace es poner por defecto el equipo, el primer jugador y la imagen (una vez se haya entrado y navegado a otras pestañas)
   const handleEquipoClick = (equipoIndex) => {
-      setequipoSeleccionado(equipoIndex);
-      setjugadorSeleccionado(0);
-      setimagenseleccionada(jugadores[equipoIndex][0].imagen);
+    setequipoSeleccionado(equipoIndex);
+    setjugadorSeleccionado(0);
+    setimagenseleccionada(jugadores[equipoIndex][0].imagen);
+    setMostrarEquipos(false); // Ocultar los equipos
+    setMostrarJugadores(true); // Mostrar jugadores
+  }
+  
+
+  const handleMobileEquipoClick = (equipoIndex) => {
+    setequipoSeleccionado(equipoIndex); // Establece equipoSeleccionado en dispositivos móviles
+    setjugadorSeleccionado(0);
   }
 
   //Funcíon para ejecutar cuando el puntero esta encima de un equipo/jugador
@@ -71,24 +81,29 @@ export default function App() {
     <View style={styles.container}>
       <Header 
         equipos={equipos} 
-        setequipoSeleccionado={setequipoSeleccionado} 
         equipoSeleccionado={equipoSeleccionado} 
-        handleEquipoClick={handleEquipoClick} 
         hoveredIndex={hoveredIndex} 
+        setequipoSeleccionado={setequipoSeleccionado} 
+        setMostrarEquipos={setMostrarEquipos}
+        handleEquipoClick={handleEquipoClick} 
+        handleMobileEquipoClick={handleMobileEquipoClick}
         handleMouseEnter={handleMouseEnter} 
         handleMouseLeave={handleMouseLeave}>
       </Header>
       <Body 
+        mostrarEquipos={mostrarEquipos}
         jugadores={jugadores} 
-        equipoSeleccionado={equipoSeleccionado} 
+        equipoSeleccionado={equipoSeleccionado}
         jugadorSeleccionado={jugadorSeleccionado} 
-        setjugadorSeleccionado={setjugadorSeleccionado} 
         imagenSeleccionada={imagenSeleccionada} 
+        setjugadorSeleccionado={setjugadorSeleccionado} 
         setimagenseleccionada={setimagenseleccionada}
         hoveredIndex={hoveredIndex} 
         handleMouseEnter={handleMouseEnter} 
-        handleMouseLeave={handleMouseLeave}>
+        handleMouseLeave={handleMouseLeave}
+        mostrarJugadores={mostrarJugadores}>
       </Body>
+
       <Footer></Footer>    
     </View>
   );
