@@ -3,24 +3,34 @@ import Aside from './Aside';
 import Perfil from './Perfil';
 import Jugadores from './Jugadores';
 
-export default function Body( { jugadores, equipoSeleccionado, jugadorSeleccionado, setjugadorSeleccionado, setimagenseleccionada, imagenSeleccionada}) {
+export default function Body({
+  jugadores,
+  equipoSeleccionado,
+  jugadorSeleccionado,
+  setjugadorSeleccionado,
+  setimagenseleccionada,
+  imagenSeleccionada,
+}) {
+  const windowWidth = Dimensions.get('window').width;
 
-  return(
-      <View style={styles.bodyStyle}>
-        <Aside jugadores={jugadores} equipoSeleccionado={equipoSeleccionado} jugadorSeleccionado={jugadorSeleccionado} setjugadorSeleccionado={setjugadorSeleccionado} setimagenseleccionada={setimagenseleccionada}></Aside>
-        <Perfil imagenSeleccionada={imagenSeleccionada} jugadorSeleccionado={jugadorSeleccionado} equipoSeleccionado={equipoSeleccionado}></Perfil>
-    </View>
-)};
-
-/*
-return (
+  return (
     <View style={styles.bodyStyle}>
-      {Platform.OS === 'web' || Platform.OS === 'ios' ? ( // Versión para ordenador
-        <View style={styles.ordenadorContainer}>
-          <Aside jugadores={jugadores} equipoSeleccionado={equipoSeleccionado} jugadorSeleccionado={jugadorSeleccionado} setjugadorSeleccionado={setjugadorSeleccionado} setimagenseleccionada={setimagenseleccionada}></Aside>
-          <Perfil imagenSeleccionada={imagenSeleccionada} jugadorSeleccionado={jugadorSeleccionado} equipoSeleccionado={equipoSeleccionado}></Perfil>
+      {windowWidth >= 600 ? ( // Si el ancho de la pantalla es mayor o igual a 600, muestra la versión de escritorio
+        <View style={styles.bodyStyleOrdenador}>
+          <Aside
+            jugadores={jugadores}
+            equipoSeleccionado={equipoSeleccionado}
+            jugadorSeleccionado={jugadorSeleccionado}
+            setjugadorSeleccionado={setjugadorSeleccionado}
+            setimagenseleccionada={setimagenseleccionada}
+          />
+          <Perfil
+            imagenSeleccionada={imagenSeleccionada}
+            jugadorSeleccionado={jugadorSeleccionado}
+            equipoSeleccionado={equipoSeleccionado}
+          />
         </View>
-      ) : ( // Versión para móvil
+      ) : ( // En otros casos (pantallas más estrechas, es decir, versión móvil), muestra la versión móvil
         <View style={styles.jugadoresVertical}>
           {jugadores[equipoSeleccionado].map((jugador, index) => (
             <View key={index}>
@@ -41,7 +51,6 @@ return (
     </View>
   );
 }
-*/
 
 const styles = StyleSheet.create({
   bodyStyle: {
@@ -50,10 +59,12 @@ const styles = StyleSheet.create({
     borderColor: '#000000',
     flex: 1,
   },
-  
-  ordenadorContainer: {
-    flexDirection: 'row', // Para mantener la apariencia anterior en ordenador
+
+  bodyStyleOrdenador: {
+    flexDirection: 'row',
+    flex: 1,
   },
+
   jugadoresVertical: {
     flex: 1,
     flexDirection: 'column',

@@ -49,7 +49,7 @@ export default function App() {
   const [jugadorSeleccionado, setjugadorSeleccionado] = useState(0);
   const [imagenSeleccionada, setimagenseleccionada] = useState(jugadores[0][0].imagen); //Eso es para que salga por defecto el primer equipo, con el primer jugador y la imagen (al iniciar la aplicación)
   const [hoveredIndex, setHoveredIndex] = useState(null); //Estado para añadir el hover a los equipos y jugadores
-  const [mostrarJugadores, setMostrarJugadores] = useState(true);
+  const [mostrarJugadores, setMostrarJugadores] = useState(false);
   const [mostrarEquipos, setMostrarEquipos] = useState(false);
 
   //La funcion handleEquipoClick lo que hace es poner por defecto el equipo, el primer jugador y la imagen (una vez se haya entrado y navegado a otras pestañas)
@@ -57,8 +57,6 @@ export default function App() {
     setequipoSeleccionado(equipoIndex);
     setjugadorSeleccionado(0);
     setimagenseleccionada(jugadores[equipoIndex][0].imagen);
-    setMostrarEquipos(false); // Ocultar los equipos
-    setMostrarJugadores(true); // Mostrar jugadores
   }
   
 
@@ -85,6 +83,7 @@ export default function App() {
         hoveredIndex={hoveredIndex} 
         setequipoSeleccionado={setequipoSeleccionado} 
         setMostrarEquipos={setMostrarEquipos}
+        setMostrarJugadores={setMostrarJugadores}
         handleEquipoClick={handleEquipoClick} 
         handleMobileEquipoClick={handleMobileEquipoClick}
         handleMouseEnter={handleMouseEnter} 
@@ -96,12 +95,12 @@ export default function App() {
         equipoSeleccionado={equipoSeleccionado}
         jugadorSeleccionado={jugadorSeleccionado} 
         imagenSeleccionada={imagenSeleccionada} 
+        hoveredIndex={hoveredIndex} 
+        mostrarJugadores={mostrarJugadores}
         setjugadorSeleccionado={setjugadorSeleccionado} 
         setimagenseleccionada={setimagenseleccionada}
-        hoveredIndex={hoveredIndex} 
         handleMouseEnter={handleMouseEnter} 
-        handleMouseLeave={handleMouseLeave}
-        mostrarJugadores={mostrarJugadores}>
+        handleMouseLeave={handleMouseLeave}>
       </Body>
 
       <Footer></Footer>    
